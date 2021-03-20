@@ -141,7 +141,13 @@
 
 # keep-alive
 
-![image-20210313145553949](D:\实习准备\学习笔记\image-20210313145553949.png)
+![image-20210320214349942](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210320214349942.png)
+
+![image-20210320214124473](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210320214124473.png)
+
+![image-20210320214707600](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210320214707600.png)
+
+![image-20210320215509142](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210320215509142.png)
 
 # 组件通信方式
 
