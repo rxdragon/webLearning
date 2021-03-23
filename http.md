@@ -20,7 +20,7 @@ SPDY对当前的HTTP协议有4个改进：
 
 # http缓存控制
 
-![image-20210313143715591](D:\实习准备\学习笔记\image-20210313143715591.png)
+![image-20210313143715591](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210313143715591.png)
 
 # http状态码
 
