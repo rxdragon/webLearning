@@ -11,7 +11,7 @@
   
   订阅器 Dep，用来收集订阅者，对监听器 Observer 和 订阅者 Watcher 进行统一管理
 
-  ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200318221541823.png?x-oss-process=image)
+  ![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324202443.png)
 
 - ## 核心
 
@@ -19,7 +19,7 @@
 
   ## 原理图
 
-  ![img](https://images2017.cnblogs.com/blog/1162184/201709/1162184-20170918135341618-553576179.png)
+  ![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324202456.png)
 
   vue的数据双向绑定 将MVVM作为数据绑定的入口，整合Observer，Compile和Watcher三者，通过Observer来监听自己的model的数据变化，通过Compile来解析编译模板指令（vue中是用来解析 {{}}），最终利用watcher搭起observer和Compile之间的通信桥梁，达到数据变化 —>视图更新；视图交互变化（input）—>数据model变更双向绑定效果。
 
@@ -152,11 +152,11 @@
 # 组件通信方式
 
 - props / $emit 适用 父子组件通信
-- ref 与 $parent / $children 适用 父子组件通信
-- EventBus （$emit / $on） 适用于 父子、隔代、兄弟组件通信
-- *a**t**t**r**s*/listeners 适用于 隔代组件通信
+- ref 与 $parent / $children 适用父子组件通信
+- EventBus （$emit / $on） 适用于父子、隔代、兄弟组件通信
+- *a**t**t**r**s*/listeners 适用于隔代组件通信
 
-- provide / inject 适用于 隔代组件通信
+- provide / inject 适用于隔代组件通信
 - Vuex 适用于 父子、隔代、兄弟组件通信
 
 # watch/computed的区别

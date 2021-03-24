@@ -13,3 +13,22 @@ CSS hack是通过在[CSS样式](http://www.w3cschool.cn/codecamp/style-the-html-
 - 不推荐使用@import语句
   - `@import`引入的 CSS 将在页面加载完毕后被加载
   - `@import`是 CSS2.1 才有的语法，故只可在 IE5+ 才能识别
+
+# CSS3新特性
+
+css3的新特征:
+
+1. 选择器。
+2. 和透明度。
+3. 多栏布局。
+4. 多背景图。
+5. Word Wrap。
+6. 文字阴影。
+7. @font-face属性。
+8. 圆角(边框半径)。
+9. 边框图片。
+10. 盒阴影。
+11. 
+12.  盒子大小。
+13. 媒体查询。
+14. 语音。

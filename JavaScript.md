@@ -51,7 +51,7 @@ javascript是一门**单线程**语言，虽然HTML5提出了Web-works这样的�
 
 - 异步任务
 
-  ![图片描述](https://segmentfault.com/img/bVbtXrk)
+  ![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324202055)
 
 1. 同步和异步任务分别进入不同的 '‘场所'’ 执行。所有同步任务都在主线程上执行，形成一个执行栈；而异步任务进入Event Table并注册回调函数
 2. 当这个异步任务有了运行结果，Event Table会将这个回调函数移入Event Queue，进入等待状态
@@ -155,7 +155,228 @@ JS环境中分配的内存一般有如下生命周期：
 
 - 需要注意的地方，如果**回调函数**是**对象的方法**，那么`setTimeout`使得**方法内部**的**`this`**关键字**指向全局环境**，**而不是**定义时所在的那个**对象**。
 
+# 深拷贝和浅拷贝
 
+- **深拷贝**和**浅拷贝**是**变量**在**内存中的存放位置不同**(栈，堆)
+- 在js中，**对象和数组**这种**复杂的数据结构**是放在**堆中**，**堆的地址**放在**栈中**
+- js中的**number，string，bool简单类型**是放在**栈**中
+- **栈**的**存取速度比堆快**，但是**不适合存入复杂数据结构**
+- 一般直接**存放在栈**里的变量对应**深拷贝**，**放在堆里**的变量是**浅拷贝**
 
+## 一、数据类型
 
+数据分为基本数据类型(String, Number, Boolean, Null, Undefined，Symbol)和对象数据类型。
 
+1、基本数据类型的特点：直接存储在栈(stack)中的数据
+
+2、引用数据类型的特点：**存储的是该对象在栈中引用，真实的数据存放在堆内存里**
+
+引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。
+
+![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/13253432-74602a0f1cc0d432)
+
+堆内存
+
+## 二、浅拷贝与深拷贝
+
+**深拷贝和浅拷贝是只针对Object和Array这样的引用数据类型的**。
+
+深拷贝和浅拷贝的示意图大致如下：
+
+![image-20210324200119286](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210324200119286.png)
+
+示意图
+
+**浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。**
+
+![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/13253432-4eae0bbcf9d34ae3)
+
+## 三、赋值和浅拷贝的区别
+
+当我们把一个对象赋值给一个新的变量时，**赋的其实是该对象的在栈中的地址，而不是堆中的数据**。也就是**两个对象指向**的是**同一个存储空间**，无论哪个对象发生改变，其实都是改变的存储空间的内容，因此，**两个对象是联动**的。
+
+**浅拷贝**是按位拷贝对象，**它会创建一个新对象**，这个对象有着原始对象属性值的一份精确拷贝。如果属性是基本类型，拷贝的就是基本类型的值；如果属性是内存地址（引用类型），拷贝的就是内存地址 ，因此如果其中一个对象改变了这个地址，就会影响到另一个对象。即**默认拷贝构造函数**只是对对象进行**浅拷贝复制**(逐个成员依次拷贝)，即**只复制对象空间而不复制资源**。
+
+## 四、浅拷贝的实现方式
+
+### 1. Object.assign()
+
+`Object.assign()` 方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。但是 `Object.assign()` 进行的是浅拷贝，拷贝的是对象的属性的引用，而不是对象本身。
+
+```js
+var obj = { a: {a: "kobe", b: 39} };
+var initalObj = Object.assign({}, obj);
+initalObj.a.a = "wade";
+console.log(obj.a.a); // wade
+```
+
+注意：当object只有一层的时候，是深拷贝
+
+```js
+let obj = {
+   username: 'kobe'
+};
+let obj2 = Object.assign({},obj);
+obj2.username = 'wade';
+console.log(obj);//{username: "kobe"}
+```
+
+### 2. Array.prototype.concat()
+
+```js
+let arr = [1, 3, {
+   username: 'kobe'
+}];
+let arr2=arr.concat();    
+arr2[2].username = 'wade';
+console.log(arr);
+```
+
+修改新对象会改到原对象：
+
+![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324201531)
+
+### 3. Array.prototype.slice()
+
+```js
+let arr = [1, 3, {
+   username: ' kobe'
+}];
+let arr3 = arr.slice();
+arr3[2].username = 'wade'
+console.log(arr);
+```
+
+同样修改新对象会改到原对象：
+
+![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324201606)
+
+关于Array的slice和concat方法的补充说明：Array的slice和concat方法不修改原数组，只会返回一个浅复制了原数组中的元素的一个新数组。
+
+原数组的元素会按照下述规则拷贝：
+
+1. 如果该元素是个对象引用(不是实际的对象)，slice 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。
+2. 对于字符串、数字及布尔值来说（不是 String、Number 或者 Boolean 对象），slice 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组。
+
+可能这段话晦涩难懂，我们举个例子，将上面的例子小作修改：
+
+```js
+let arr = [1, 3, {
+   username: ' kobe'
+}];
+let arr3 = arr.slice();
+arr3[1] = 2
+console.log(arr,arr3);
+```
+
+![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324202208.png)
+
+## 五、深拷贝的实现方式
+
+### 1. JSON.parse(JSON.stringify())
+
+```js
+let arr = [1, 3, {
+   username: ' kobe'
+}];
+let arr4 = JSON.parse(JSON.stringify(arr));
+arr4[2].username = 'duncan';
+console.log(arr, arr4)
+```
+
+![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324202234.png)
+
+原理： 用JSON.stringify将对象转成JSON字符串，再用JSON.parse()把字符串解析成对象，一去一来，新的对象产生了，而且对象会开辟新的栈，实现深拷贝。
+
+**这种方法虽然可以实现数组或对象深拷贝，但不能处理函数。**
+
+这是因为 `JSON.stringify()` 方法是将一个JavaScript值(对象或者数组)转换为一个 JSON字符串，不能接受函数。
+
+### 2. 手写递归方法
+
+递归方法实现深度克隆原理：**遍历对象、数组直到里边都是基本数据类型，然后再去复制，就是深度拷贝。**
+
+```js
+// 定义检测数据类型的功能函数
+   function checkedType(target) {
+     return Object.prototype.toString.call(target).slice(8, -1)
+   }
+   // 实现深度克隆---对象/数组
+   function clone(target) {
+     // 判断拷贝的数据类型
+     // 初始化变量result 成为最终克隆的数据
+     let result, targetType = checkedType(target)
+     if (targetType === 'object') {
+       result = {}
+     } else if (targetType === 'Array') {
+       result = []
+     } else {
+       return target
+     }
+     // 遍历目标数据
+     for (let i in target) {
+       // 获取遍历数据结构的每一项值。
+       let value = target[i]
+       // 判断目标结构里的每一值是否存在对象/数组
+       if (checkedType(value) === 'Object' ||
+         checkedType(value) === 'Array') { //对象/数组里嵌套了对象/数组
+         // 继续遍历获取到value值
+         result[i] = clone(value)
+       } else { 
+        // 获取到value值是基本的数据类型或者是函数。
+         result[i] = value;
+       }
+     }
+     return result
+   }
+
+   // 定义检测数据类型的功能函数
+   function checkedType(target) {
+     return Object.prototype.toString.call(target).slice(8, -1)
+   }
+   // 实现深度克隆---对象/数组
+   function clone(target) {
+     // 判断拷贝的数据类型
+     // 初始化变量result 成为最终克隆的数据
+     let result, targetType = checkedType(target)
+     if (targetType === 'object') {
+       result = {}
+     } else if (targetType === 'Array') {
+       result = []
+     } else {
+       return target
+     }
+     // 遍历目标数据
+     for (let i in target) {
+       // 获取遍历数据结构的每一项值。
+       let value = target[i]
+       // 判断目标结构里的每一值是否存在对象/数组
+       if (checkedType(value) === 'Object' ||
+         checkedType(value) === 'Array') { 
+          // 对象/数组里嵌套了对象/数组
+          // 继续遍历获取到value值
+         result[i] = clone(value)
+       } else { 
+         // 获取到value值是基本的数据类型或者是函数。
+         result[i] = value;
+       }
+     }
+     return result
+   }
+```
+
+### 3. 函数库lodash
+
+该函数库也有提供 `_.cloneDeep` 用来做 Deep Copy。
+
+```js
+var _ = require('lodash');
+var obj1 = {
+   a: 1,
+   b: { f: { g: 1 } },
+   c: [1, 2, 3]
+};
+var obj2 = _.cloneDeep(obj1);
+console.log(obj1.b.f === obj2.b.f);
+// false
+```
