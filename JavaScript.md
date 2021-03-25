@@ -51,7 +51,7 @@ javascript是一门**单线程**语言，虽然HTML5提出了Web-works这样的�
 
 - 异步任务
 
-  ![image-20210324210629826](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105152.png)
+  ![image-20210324210629826](img/image-20210324210629826.png)
 
 1. 同步和异步任务分别进入不同的 '‘场所'’ 执行。所有同步任务都在主线程上执行，形成一个执行栈；而异步任务进入Event Table并注册回调函数
 2. 当这个异步任务有了运行结果，Event Table会将这个回调函数移入Event Queue，进入等待状态
