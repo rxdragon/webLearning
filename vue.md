@@ -11,7 +11,7 @@
   
   订阅器 Dep，用来收集订阅者，对监听器 Observer 和 订阅者 Watcher 进行统一管理
 
-  ![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324202443.png)
+  ![20200318221541823](img/20200318221541823.png)
 
 - ## 核心
 
@@ -19,7 +19,7 @@
 
   ## 原理图
 
-  ![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324202456.png)
+  ![1162184-20170918135341618-553576179](img/1162184-20170918135341618-553576179.png)
 
   vue的数据双向绑定 将MVVM作为数据绑定的入口，整合Observer，Compile和Watcher三者，通过Observer来监听自己的model的数据变化，通过Compile来解析编译模板指令（vue中是用来解析 {{}}），最终利用watcher搭起observer和Compile之间的通信桥梁，达到数据变化 —>视图更新；视图交互变化（input）—>数据model变更双向绑定效果。
 
@@ -141,13 +141,13 @@
 
 # keep-alive
 
-![image-20210320214349942](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210320214349942.png)
+![image-20210320214349942](img/image-20210320214349942.png)
 
-![image-20210320214124473](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210320214124473.png)
+![image-20210320214124473](img/image-20210320214124473.png)
 
-![image-20210320214707600](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210320214707600.png)
+![image-20210320214707600](img/image-20210320214707600.png)
 
-![image-20210320215509142](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210320215509142.png)
+![image-20210320215509142](img/image-20210320215509142.png)
 
 # 组件通信方式
 

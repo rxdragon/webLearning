@@ -6,15 +6,15 @@
 - action：类似于mutation，用于提交mutation来改变状态，而不直接变更状态，可以**包含任意异步**操作
 - modules：类似于**命名空间**，用于项目中将**各个模块的状态**分开定义和操作，便于维护
 
-![image-20210313144154080](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210313144154080.png)
+![image-20210313144154080](img/image-20210313144154080.png)
 
-![image-20210313144519685](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210313144519685.png)
+![image-20210313144519685](img/image-20210313144519685.png)
 
-![image-20210313144921117](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210313144921117.png)
+![image-20210313144921117](img/image-20210313144921117.png)
 
-![image-20210313145752504](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210313145752504.png)
+![image-20210313145752504](img/image-20210313145752504.png)
 
-![image-20210313154343413](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210313154343413.png)
+![image-20210313154343413](img/image-20210313154343413.png)
 
-![image-20210313154420071](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210313154420071.png)
+![image-20210313154420071](img/image-20210313154420071.png)
 

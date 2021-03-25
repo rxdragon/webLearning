@@ -173,9 +173,7 @@ JS环境中分配的内存一般有如下生命周期：
 
 引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。
 
-![image-20210324210658608](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324210659.png)
-
-堆内存
+![image-20210324200352146](img/image-20210324200352146.png)堆内存
 
 ## 二、浅拷贝与深拷贝
 
@@ -183,13 +181,13 @@ JS环境中分配的内存一般有如下生命周期：
 
 深拷贝和浅拷贝的示意图大致如下：
 
-![image-20210324200119286](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210324200119286.png)
+![image-20210324200119286](img/image-20210324200119286.png)
 
 示意图
 
 **浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。**
 
-![image-20210324210722417](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105234.png)
+![image-20210324210722417](img/image-20210324210722417.png)
 
 ## 三、赋值和浅拷贝的区别
 
@@ -234,7 +232,7 @@ console.log(arr);
 
 修改新对象会改到原对象：
 
-![image-20210324210749408](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105334.png)
+![image-20210324210749408](img/image-20210324210749408.png)
 
 ### 3. Array.prototype.slice()
 
@@ -249,7 +247,7 @@ console.log(arr);
 
 同样修改新对象会改到原对象：
 
-![image-20210324210801648](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105410.png)
+![image-20210324210801648](img/image-20210324210801648.png)
 
 关于Array的slice和concat方法的补充说明：Array的slice和concat方法不修改原数组，只会返回一个浅复制了原数组中的元素的一个新数组。
 
@@ -269,7 +267,7 @@ arr3[1] = 2
 console.log(arr,arr3);
 ```
 
-![13253432-c367deeb87129f59](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105453.png)
+![13253432-c367deeb87129f59](img/13253432-c367deeb87129f59.png)
 
 ## 五、深拷贝的实现方式
 
@@ -284,7 +282,7 @@ arr4[2].username = 'duncan';
 console.log(arr, arr4)
 ```
 
-![13253432-69586c8b47ecf244](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105536.png)
+![13253432-69586c8b47ecf244](img/13253432-69586c8b47ecf244.png)
 
 原理： 用JSON.stringify将对象转成JSON字符串，再用JSON.parse()把字符串解析成对象，一去一来，新的对象产生了，而且对象会开辟新的栈，实现深拷贝。
 

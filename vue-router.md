@@ -1,6 +1,6 @@
 # vue-router 传值
 
-![image-20210313150604182](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210313150604182.png)
+![image-20210313150604182](img/image-20210313150604182.png)
 
 # vue-router 动态路由
 
@@ -43,8 +43,8 @@
 
 如何将路由中引用的对象字符串化？我遇到的实际问题是：使用的`UI`组件提供了布局方案，需要引用布局组件并在子路由处引用具体页面。我选择的解决方案是：区别对待需要引用布局组件的`component`属性，使用简短字符串代替布局组件，使用文件路径字符串代替页面引入。
 
-![image-20210320221554742](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210320221554742.png)
+![image-20210320221554742](img/image-20210320221554742.png)
 
-![image-20210320220602856](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210320220602856.png)
+![image-20210320220602856](img/image-20210320220602856.png)
 
-![image-20210320221351335](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/image-20210320221351335.png)
+![image-20210320221351335](img/image-20210320221351335.png)
