@@ -51,7 +51,7 @@ javascript是一门**单线程**语言，虽然HTML5提出了Web-works这样的�
 
 - 异步任务
 
-  ![image-20210324210629826](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324210631.png)
+  ![image-20210324210629826](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105152.png)
 
 1. 同步和异步任务分别进入不同的 '‘场所'’ 执行。所有同步任务都在主线程上执行，形成一个执行栈；而异步任务进入Event Table并注册回调函数
 2. 当这个异步任务有了运行结果，Event Table会将这个回调函数移入Event Queue，进入等待状态
@@ -189,7 +189,7 @@ JS环境中分配的内存一般有如下生命周期：
 
 **浅拷贝只复制指向某个对象的指针，而不复制对象本身，新旧对象还是共享同一块内存。但深拷贝会另外创造一个一模一样的对象，新对象跟原对象不共享内存，修改新对象不会改到原对象。**
 
-![image-20210324210722417](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324210723.png)
+![image-20210324210722417](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105234.png)
 
 ## 三、赋值和浅拷贝的区别
 
@@ -234,7 +234,7 @@ console.log(arr);
 
 修改新对象会改到原对象：
 
-![image-20210324210749408](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324210750.png)
+![image-20210324210749408](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105334.png)
 
 ### 3. Array.prototype.slice()
 
@@ -249,7 +249,7 @@ console.log(arr);
 
 同样修改新对象会改到原对象：
 
-![image-20210324210801648](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324210802.png)
+![image-20210324210801648](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105410.png)
 
 关于Array的slice和concat方法的补充说明：Array的slice和concat方法不修改原数组，只会返回一个浅复制了原数组中的元素的一个新数组。
 
@@ -269,7 +269,7 @@ arr3[1] = 2
 console.log(arr,arr3);
 ```
 
-![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324202208.png)
+![13253432-c367deeb87129f59](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105453.png)
 
 ## 五、深拷贝的实现方式
 
@@ -284,7 +284,7 @@ arr4[2].username = 'duncan';
 console.log(arr, arr4)
 ```
 
-![img](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210324202234.png)
+![13253432-69586c8b47ecf244](https://cdn.jsdelivr.net/gh/rxdragon/webLearning/img/20210325105536.png)
 
 原理： 用JSON.stringify将对象转成JSON字符串，再用JSON.parse()把字符串解析成对象，一去一来，新的对象产生了，而且对象会开辟新的栈，实现深拷贝。
 
